@@ -1,5 +1,5 @@
 <template>
-  <div class="block" v-show="showBlock">Click Me</div>
+  <div class="block" v-show="showBlock" @click="stopTimer">Click Me</div>
 </template>
 
 <script>
@@ -8,12 +8,26 @@ export default {
   data() {
     return {
       showBlock: false,
+      timer: null,
+      reactionTime: 0,
     };
   },
   mounted() {
     setTimeout(() => {
       this.showBlock = true;
+      this.startTimer();
     }, this.delay); // show block depends on delay props value
+  },
+  methods: {
+    startTimer() {
+      this.timer = setInterval(() => {
+        this.reactionTime += 10;
+      }, 10);
+    },
+    stopTimer() {
+      clearInterval(this.timer);
+      console.log(this.reactionTime);
+    },
   },
 };
 </script>
