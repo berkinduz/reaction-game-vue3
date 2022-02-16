@@ -1,7 +1,11 @@
-<template></template>
+<template>
+  <p>Reaction Time is: {{ result }} ms</p>
+</template>
 
 <script>
-export default {};
+export default {
+  props: ["result"], //get from Parent
+};
 </script>
 
 <style>
