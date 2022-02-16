@@ -22,11 +22,11 @@ export default {
     startTimer() {
       this.timer = setInterval(() => {
         this.reactionTime += 10;
-      }, 10);
+      }, 10); // increase reacTion time every 10ms until stopTimer called
     },
     stopTimer() {
       clearInterval(this.timer);
-      console.log(this.reactionTime);
+      this.$emit("end", this.reactionTime); //parent calls it with parameter
     },
   },
 };
